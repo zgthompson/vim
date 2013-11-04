@@ -1,0 +1,6 @@
+Steps to set up vim environment
+1) mv .vimrc ~/.vimrc
+2) mkdir -p .vim/bundle
+3) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+4) Inside vim run :BundleInstall
+
