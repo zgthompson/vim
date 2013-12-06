@@ -20,6 +20,7 @@ Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'lukaszb/vim-web-indent'
 " colorschemes
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-vividchalk'
@@ -81,16 +82,16 @@ set visualbell
 " is unset, this does nothing.
 set t_vb=
 " Enable use of the mouse for all modes
-set mouse=a
+" set mouse=a
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
 set cmdheight=2
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
 " Indentation settings for using 2 spaces instead of tabs.
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 "------------------------------------------------------------
@@ -105,7 +106,7 @@ nmap <leader>l :set list!<CR>
 " Use <leader>p to toggle between 'paste' and 'nopaste'
 nmap <leader>p :set paste!<CR>
 
-" Use <leader>w to clear trailing whitespace
+" Use <leader><leader>w to clear trailing whitespace
 nmap <leader><leader>w :%s/\s\+$//e<CR>
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as
@@ -132,7 +133,7 @@ function! Stab()
   let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
   if l:tabstop > 0
     let &l:sts = l:tabstop
-    let &l:ts = l:tabstop
+
     let &l:sw = l:tabstop
   endif
   call SummarizeTabs()
@@ -197,3 +198,6 @@ set list
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_checkers=['gcc']
+let g:syntastic_cpp_compiler_options=' -std=c++11'
