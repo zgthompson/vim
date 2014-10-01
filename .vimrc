@@ -20,10 +20,11 @@ Bundle 'gmarik/vundle'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'lukaszb/vim-web-indent'
+Bundle 'scrooloose/nerdtree'
 " colorschemes
 Bundle 'tomasr/molokai'
 Bundle 'tpope/vim-vividchalk'
+Bundle 'altercation/vim-colors-solarized'
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
@@ -109,13 +110,19 @@ nmap <leader>p :set paste!<CR>
 " Use <leader><leader>w to clear trailing whitespace
 nmap <leader><leader>w :%s/\s\+$//e<CR>
 
+" Easier window navigation
+:nmap <silent> <C-h> :wincmd h<CR>
+:nmap <silent> <C-j> :wincmd j<CR>
+:nmap <silent> <C-k> :wincmd k<CR>
+:nmap <silent> <C-l> :wincmd l<CR>
+
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as
 " which is the default
 map Y y$
 
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-nnoremap <C-L> :nohl<CR><C-L>
+nnoremap \ :nohl<CR><C-L>
 
 " CtrlP plugin mappings
 let g:ctrlp_map = '<c-p>'
@@ -123,6 +130,8 @@ let g:ctrlp_cmd = 'CtrlP'
 
 " Easy motion leader key to <leader> instead of <leader><leader>
 let g:EasyMotion_leader_key = '<leader>'
+
+silent! nmap <F2> :NERDTreeToggle<CR>
 "------------------------------------------------------------
 " FUNCTIONS
 "------------------------------------------------------------
@@ -186,8 +195,9 @@ set history=10000
 
 "set colorscheme
 set t_Co=256
+let g:solarized_termcolors=256
 set background=dark
-color molokai
+color solarized
 
 " no word wrapping
 set nowrap
@@ -201,3 +211,10 @@ set listchars=tab:▸\ ,eol:¬
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_checkers=['gcc']
 let g:syntastic_cpp_compiler_options=' -std=c++11'
+
+set smarttab
+set cindent
+
+nmap <S-Enter> O<Esc>j
+nmap <CR> o<Esc>k
+
