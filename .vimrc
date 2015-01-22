@@ -195,9 +195,9 @@ set history=10000
 
 "set colorscheme
 set t_Co=256
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 set background=dark
-color solarized
+color molokai
 
 " no word wrapping
 set nowrap
